@@ -21,7 +21,7 @@ history | awk '{print $2}' | sort | uniq -c | sort -n | tail -n 20
 The sed utility reads the specified files, or the standard input if no files are specified, modifying the input as specified by a list of commands. The input is then written to the standard output.
 
 ```
-# replace string in file
+# replace string in file, "-i" updated the file in place
 sed -i 's/old_string/new_string/g' input.txt
 
 # find string in all files in the current directory and
