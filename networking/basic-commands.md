@@ -7,7 +7,7 @@ coverY: 0
 
 ## ping
 
-Send ICMP ECHO_REQUEST packets to network hosts.
+Send ICMP ECHO_REQUEST packets to network hosts. This command helps to verify that an DNS entry is reachable and can be resolved. You can also ping an IP address directly to exclude DNS issues. The response times can be an indicator of bad network connections.
 
 ```
 ping google.com
@@ -22,7 +22,7 @@ PING google.com (142.250.186.78): 56 data bytes
 
 ## wget
 
-The non-interactive network downloader.
+The non-interactive network downloader. This is an easy way to download files from websites.
 
 ```
 wget heise.de
@@ -45,10 +45,18 @@ index.html
 
 ## arp
 
-Address resolution display and control. ARP stands for Address Resolution Protocol. It is used to resolve the IP address of a system to its MAC address, and hence it works between level 2 (Data link layer) and level 3 (Network layer).
+Address resolution display and control. ARP stands for Address Resolution Protocol. It is used to resolve the IP address of a system to its MAC address, and hence it works between level 2 (Data link layer) and level 3 (Network layer). For larger production environment you sometimes run into strange network problems. If you have more than 1024 IP assigned to processes / hosts then you need to increase the ARP cache settings via sysctl.
 
 ```
 arp -a
+
+# Set ARP cache entry timeout
+net.ipv4.neigh.default.gc_stale_time = 3600
+
+# Setup DNS threshold for arp (see sysctl command)
+net.ipv4.neigh.default.gc_thresh3 = 4096
+net.ipv4.neigh.default.gc_thresh2 = 2048
+net.ipv4.neigh.default.gc_thresh1 = 1024
 ```
 
 ## curl
@@ -63,7 +71,8 @@ Transfer data from or to a server. Supported protocols: HTTP, HTTPS, FTP, FTPS, 
 curl ifconfig.co
 
 # pass HTTP Authorization to GET request
-curl --location --request GET https://<fqdn>/api/resource --header "Authorization: apiToken <token>"
+curl --location --request GET https://example.com/api/resource \
+     --header "Authorization: apiToken <token>"
 ```
 
 ## dig
@@ -177,6 +186,8 @@ ifconfig en0 mtu 1000
 
 ## tcpdump
 
+Capture your local TCP traffic in different formats for further analysis.
+
 ```
 # traffic overview 
 tcpdump
@@ -198,7 +209,7 @@ A great tool for analysing TPC traffic is [https://www.wireshark.org/](https://w
 
 ## Port Forwarding
 
-Use port forwarding to bind port from other host to localhost
+Use port forwarding to bind port from other host to localhost. This can be useful when a server does not allow connecting to a port from the outside. Then you can simply forward the port and access it locally.
 
 ```
 ssh -i ~/.ssh/id_ed25519 -Nf -L 8080:localhost:8080 marcel@domain.example.com
@@ -216,7 +227,7 @@ netstat -tnlp
 
 ## iptraf
 
-Interactive Colorful IP LAN Monitor
+Interactive Colorful IP LAN Monitor. Useful tool to see traffic flowing between servers. Useful when identifying cross availability zone traffic that can be quite expensive with cloud providers like AWS and GCP.
 
 ![](<../.gitbook/assets/image (1).png>)
 
@@ -282,7 +293,7 @@ MulticastDNS setting: no
 
 ## ssh
 
-OpenSSH SSH client (remote login program)
+OpenSSH SSH client (remote login program). Standard tool to access remote server via port 22 securely.
 
 ```
 ssh example.com
@@ -292,7 +303,7 @@ ssh -i <path-to-private-ssh-key> username@example.com
 
 ## scp
 
-Secure copy (remote file copy program).
+Secure copy (remote file copy program). 
 
 ```
 # copy local file to remote server
@@ -333,7 +344,7 @@ sysctl –p
 
 ## telnet
 
-The telnet command is used to communicate with another host using the TELNET protocol.
+The telnet command is used to communicate with another host using the TELNET protocol. First tool of choice to check if ports are reachable during debugging sessions.
 
 ```
 # syntax
