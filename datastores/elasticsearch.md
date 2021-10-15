@@ -69,3 +69,17 @@ curl localhost:9200/_cat
 /_cat/repositories
 /_cat/snapshots/{repository}
 ```
+
+## Check pending tasks
+
+```
+curl localhost:9200/_cluster/pending_tasks?pretty
+```
+
+## Check max result size settings
+
+```
+curl -s localhost:9200/_settings | jq . | grep max_result_window | sort | uniq -c
+     64         "max_result_window": "150000",
+   2586         "max_result_window": "300000",
+```
