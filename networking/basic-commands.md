@@ -5,7 +5,7 @@ coverY: 0
 
 # Basic commands
 
-## curl - transfer a URL
+## curl
 
 Transfer data from or to a server. Supported protocols: HTTP, HTTPS, FTP, FTPS, IMAP, LDAP, TELNET, ...)
 
@@ -20,7 +20,7 @@ curl ifconfig.co
 curl --location --request GET https://<fqdn>/api/resource --header "Authorization: apiToken <token>"
 ```
 
-## dig - DNS lookup utility
+## dig
 
 1. Perform DNS lookups
 2. Find host addresses, IP addresses, CNAMEs, name servers, and more
