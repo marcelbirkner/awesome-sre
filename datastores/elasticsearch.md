@@ -83,3 +83,88 @@ curl -s localhost:9200/_settings | jq . | grep max_result_window | sort | uniq -
      64         "max_result_window": "150000",
    2586         "max_result_window": "300000",
 ```
+
+## Get list of nodes
+
+```
+curl localhost:9200/_cat/nodes
+10.254.101.109 10.254.101.109 79 99 3.13 d - Aragorn
+10.254.105.237 10.254.105.237 82 99 9.42 d - Geirrodur
+10.254.127.205 10.254.127.205 65 99 3.06 d - Nezarr the Calculator
+10.254.122.73  10.254.122.73  56 98 3.57 d - Psi-Lord
+10.254.84.58   10.254.84.58   38 99 5.29 d - Patriot II
+10.254.126.196 10.254.126.196 45 99 4.90 d - Abominatrix
+10.254.95.218  10.254.95.218  54 99 2.69 d - Warstrike
+...
+```
+
+## Check Cluster settings
+
+```
+curl -s localhost:9200/_cluster/settings | jq .
+{
+  "persistent": {
+    "cluster": {
+      "routing": {
+        "allocation": {
+          "cluster_concurrent_rebalance": "5",
+          "node_concurrent_recoveries": "10",
+          "disk": {
+            "watermark": {
+              "low": "70%",
+              "high": "73%"
+            }
+          }
+        }
+      }
+    },
+    "indices": {
+      "breaker": {
+        "fielddata": {
+          "limit": "65%"
+        },
+        "request": {
+          "limit": "35%"
+        }
+      },
+      "recovery": {
+        "concurrent_streams": "5",
+        "max_bytes_per_sec": "200mb"
+      }
+    }
+  },
+  "transient": {
+    "cluster": {
+      "routing": {
+        "allocation": {
+          "cluster_concurrent_rebalance": "5",
+          "node_concurrent_recoveries": "10",
+          "disk": {
+            "threshold_enabled": "true",
+            "watermark": {
+              "low": "78%",
+              "high": "85%"
+            }
+          },
+          "exclude": {
+            "_ip": ""
+          },
+          "awareness": {
+            "attributes": "az",
+            "force": {
+              "az": {
+                "values": "eu-west-1a,eu-west-1b,eu-west-1c"
+              }
+            }
+          },
+          "enable": "all"
+        }
+      }
+    },
+    "logger": {
+      "_root": "INFO",
+      "action": "INFO"
+    }
+  }
+}
+```
