@@ -10,3 +10,7 @@
 ## Networking
 
 * [Basic commands](networking/basic-commands.md)
+
+## Datastores
+
+* [ElasticSearch](datastores/elasticsearch.md)
