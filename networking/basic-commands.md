@@ -5,6 +5,52 @@ coverY: 0
 
 # Basic commands
 
+## ping
+
+Send ICMP ECHO_REQUEST packets to network hosts.
+
+```
+ping google.com
+
+PING google.com (142.250.186.78): 56 data bytes
+64 bytes from 142.250.186.78: icmp_seq=0 ttl=59 time=14.813 ms
+64 bytes from 142.250.186.78: icmp_seq=1 ttl=59 time=20.750 ms
+64 bytes from 142.250.186.78: icmp_seq=2 ttl=59 time=19.693 ms
+64 bytes from 142.250.186.78: icmp_seq=3 ttl=59 time=16.061 ms
+...
+```
+
+## wget
+
+The non-interactive network downloader.
+
+```
+wget heise.de
+
+--2021-10-15 19:57:35--  http://heise.de/
+Resolving heise.de (heise.de)... 193.99.144.80
+Connecting to heise.de (heise.de)|193.99.144.80|:80... connected.
+HTTP request sent, awaiting response... 301 Moved Permanently
+Location: https://www.heise.de/ [following]
+--2021-10-15 19:57:35--  https://www.heise.de/
+Resolving www.heise.de (www.heise.de)... 193.99.144.85
+Connecting to www.heise.de (www.heise.de)|193.99.144.85|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 687281 (671K) [text/html]
+Saving to: ‘index.html’
+
+index.html
+...
+```
+
+## arp
+
+Address resolution display and control. ARP stands for Address Resolution Protocol. It is used to resolve the IP address of a system to its MAC address, and hence it works between level 2 (Data link layer) and level 3 (Network layer).
+
+```
+arp -a
+```
+
 ## curl
 
 Transfer data from or to a server. Supported protocols: HTTP, HTTPS, FTP, FTPS, IMAP, LDAP, TELNET, ...)
@@ -47,6 +93,14 @@ ip -6 addr
 
 # display IP routing table
 ip route 
+```
+
+## nmap
+
+Nmap ("Network Mapper") is a free and open source ([license](https://nmap.org/npsl/)) utility for network discovery and security auditing.
+
+```
+nmap -v scanme.nmap.org
 ```
 
 ## traceroute
@@ -140,6 +194,8 @@ tcpdump "dst host server-2.company.com" -w /tmp/server-2.company.com
 timeout 5 tcpdump "(dst host elastic-1.company.com or dst host elastic-2.company.com or dst host elastic-3.company.com)" -w /tmp/elastic-server.company.com.dump
 ```
 
+A great tool for analysing TPC traffic is [https://www.wireshark.org/](https://www.wireshark.org)
+
 ## Port Forwarding
 
 Use port forwarding to bind port from other host to localhost
@@ -222,3 +278,98 @@ MulticastDNS setting: no
                       google.internal
 ```
 
+
+
+## ssh
+
+OpenSSH SSH client (remote login program)
+
+```
+ssh example.com
+ssh username@example.com
+ssh -i <path-to-private-ssh-key> username@example.com
+```
+
+## scp
+
+Secure copy (remote file copy program).
+
+```
+# copy local file to remote server
+scp localfile.txt username@example.com:remotefile.txt
+
+# copy remove file to local computer
+scp username@example.com:remotefile.txt localfile.txt
+```
+
+## rsync
+
+Sync remote files / directories with your local files / directories. The rsync remote-update protocol allows rsync to transfer just the differences between two sets of files across the network connection, using an efficient checksum-search algorithm described in the technical report that accompanies this package.
+
+```
+# Syntax
+rsync options source destination
+
+# sync local directories
+rsync -avzh /home/foo /home/bar
+
+# copy directory to remove server
+rsync -avzh /home/foo foo@example.com:/home/foo/
+```
+
+## sysctl
+
+The sysctl utility retrieves kernel state and allows processes with appropriate privilege to set kernel state.
+
+```
+# show all
+sysctl -a
+
+# modify kernel parameter in /etc/sysctl.conf
+# execute sysctl –p to commit the changes
+# changes will still be there after the reboot
+sysctl –p
+```
+
+## telnet
+
+The telnet command is used to communicate with another host using the TELNET protocol.
+
+```
+# syntax
+telnet <IP> <port>
+
+telnet 10.255.10.15 8080
+```
+
+## whois 
+
+Internet domain name and network number directory service.
+
+```
+whois google.com
+
+% IANA WHOIS server
+% for more information on IANA, visit http://www.iana.org
+% This query returned 1 object
+
+refer:        whois.verisign-grs.com
+
+domain:       COM
+
+organisation: VeriSign Global Registry Services
+address:      12061 Bluemont Way
+address:      Reston Virginia 20190
+address:      United States
+
+contact:      administrative
+name:         Registry Customer Service
+organisation: VeriSign Global Registry Services
+address:      12061 Bluemont Way
+address:      Reston Virginia 20190
+address:      United States
+phone:        +1 703 925-6999
+fax-no:       +1 703 948 3978
+e-mail:       info@verisign-grs.com
+...
+```
