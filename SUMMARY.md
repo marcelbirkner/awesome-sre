@@ -5,6 +5,7 @@
 ## Linux Commands
 
 * [Basic Commands](linux-commands/basic-commands.md)
+* [awk / sed](linux-commands/awk-sed.md)
 
 ## Networking
 
