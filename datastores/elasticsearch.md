@@ -1,6 +1,6 @@
 # ElasticSearch
 
-**Elasticsearch** is a [search engine](https://en.wikipedia.org/wiki/Search_engine_\(computing\)) based on the [Lucene](https://en.wikipedia.org/wiki/Lucene) library. It provides a distributed, [multitenant](https://en.wikipedia.org/wiki/Multitenancy)-capable [full-text search](https://en.wikipedia.org/wiki/Full-text_search) engine with an [HTTP](https://en.wikipedia.org/wiki/HTTP) web interface and schema-free [JSON](https://en.wikipedia.org/wiki/JSON) documents. 
+ElasticSearch is a [search engine](https://en.wikipedia.org/wiki/Search_engine_\(computing\)) based on the [Lucene](https://en.wikipedia.org/wiki/Lucene) library. It provides a distributed, [multitenant](https://en.wikipedia.org/wiki/Multitenancy)-capable [full-text search](https://en.wikipedia.org/wiki/Full-text_search) engine with an [HTTP](https://en.wikipedia.org/wiki/HTTP) web interface and schema-free [JSON](https://en.wikipedia.org/wiki/JSON) documents. 
 
 ElasticSearch has a nice REST API to retrieve all important settings for a running cluster. 
 
