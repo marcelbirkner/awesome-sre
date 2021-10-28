@@ -101,3 +101,26 @@ ip-10-255-203-49.us-west-2.compute.internal    Ready    <none>   35d     v1.20.7
 ip-10-255-202-81.us-west-2.compute.internal    Ready    <none>   35d     v1.20.7-eks-135321
 ...
 ```
+
+### Debug DNS inside a Kubernetes cluster
+
+First install **dnsutils**&#x20;
+
+```
+kubectl apply -f https://k8s.io/examples/admin/dns/dnsutils.yaml
+```
+
+After that you can exec different commands from inside the **dnsutils** pod to test DNS resolution. In the example below the **demo-reader** is running as a headless service with 2 replica. Using **nslookup** we can verify that we get 2 IP addresses.
+
+```
+kubectl exec dnsutils --  nslookup demo-reader
+Server:		172.20.0.10
+Address:	172.20.0.10#53
+
+Name:	demo-reader.demo.svc.cluster.local
+Address: 10.255.203.66
+Name:	demo-reader.demo.svc.cluster.local
+Address: 10.255.202.69
+```
+
+&#x20;
