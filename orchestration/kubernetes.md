@@ -123,4 +123,4 @@ Name:	demo-reader.demo.svc.cluster.local
 Address: 10.255.202.69
 ```
 
-&#x20;
+&#x20;For more see [https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/](https://kubernetes.io/docs/tasks/administer-cluster/dns-debugging-resolution/)
