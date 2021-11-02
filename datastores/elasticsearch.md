@@ -1,12 +1,12 @@
 # ElasticSearch
 
-ElasticSearch is a [search engine](https://en.wikipedia.org/wiki/Search_engine_\(computing\)) based on the [Lucene](https://en.wikipedia.org/wiki/Lucene) library. It provides a distributed, [multitenant](https://en.wikipedia.org/wiki/Multitenancy)-capable [full-text search](https://en.wikipedia.org/wiki/Full-text_search) engine with an [HTTP](https://en.wikipedia.org/wiki/HTTP) web interface and schema-free [JSON](https://en.wikipedia.org/wiki/JSON) documents. 
+ElasticSearch is a [search engine](https://en.wikipedia.org/wiki/Search\_engine\_\(computing\)) based on the [Lucene](https://en.wikipedia.org/wiki/Lucene) library. It provides a distributed, [multitenant](https://en.wikipedia.org/wiki/Multitenancy)-capable [full-text search](https://en.wikipedia.org/wiki/Full-text\_search) engine with an [HTTP](https://en.wikipedia.org/wiki/HTTP) web interface and schema-free [JSON](https://en.wikipedia.org/wiki/JSON) documents.&#x20;
 
-ElasticSearch has a nice REST API to retrieve all important settings for a running cluster. 
+ElasticSearch has a nice REST API to retrieve all important settings for a running cluster.&#x20;
 
 ## Check cluster health
 
-A good start to check on the cluster health is the "/health" endpoint. 
+A good start to check on the cluster health is the "/health" endpoint.&#x20;
 
 ```
 curl localhost:9200/_cluster/health?pretty
@@ -31,7 +31,7 @@ curl localhost:9200/_cluster/health?pretty
 
 ## Configure cluster wide settings
 
-If you want to reboot a machine or do some maintenance it makes sense to delay "index.unassigned.node_left.delayed_timeout" to 10min. Afterwards you can change it back to 30sec. For more details see [https://www.elastic.co/guide/en/elasticsearch/reference/current/delayed-allocation.html](https://www.elastic.co/guide/en/elasticsearch/reference/current/delayed-allocation.html)
+If you want to reboot a machine or do some maintenance it makes sense to delay "index.unassigned.node\_left.delayed\_timeout" to 10min. Afterwards you can change it back to 30sec. For more details see [https://www.elastic.co/guide/en/elasticsearch/reference/current/delayed-allocation.html](https://www.elastic.co/guide/en/elasticsearch/reference/current/delayed-allocation.html)
 
 ```
 curl -XPUT -H "Content-Type: application/json" \ 
@@ -168,3 +168,12 @@ curl -s localhost:9200/_cluster/settings | jq .
   }
 }
 ```
+
+### Find problematic shards
+
+If nodes crash and leave the cluster the status for the affected shards will change to "NODE\_LEFT".
+
+```
+curl -XGET localhost:9200/_cat/shards | grep -v STARTED
+```
+
