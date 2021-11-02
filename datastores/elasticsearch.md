@@ -11,7 +11,7 @@ A good start to check on the cluster health is the "/health" endpoint.&#x20;
 ```
 curl localhost:9200/_cluster/health?pretty
 {
-  "cluster_name" : "global_eu-west-1",
+  "cluster_name" : "elastic-demo-cluster-us-west-2",
   "status" : "green",
   "timed_out" : false,
   "number_of_nodes" : 68,
