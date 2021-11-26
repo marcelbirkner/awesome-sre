@@ -7,7 +7,7 @@ coverY: 0
 
 ## ping
 
-Send ICMP ECHO_REQUEST packets to network hosts. This command helps to verify that an DNS entry is reachable and can be resolved. You can also ping an IP address directly to exclude DNS issues. The response times can be an indicator of bad network connections.
+Send ICMP ECHO\_REQUEST packets to network hosts. This command helps to verify that an DNS entry is reachable and can be resolved. You can also ping an IP address directly to exclude DNS issues. The response times can be an indicator of bad network connections.
 
 ```
 ping google.com
@@ -229,7 +229,7 @@ netstat -tnlp
 
 Interactive Colorful IP LAN Monitor. Useful tool to see traffic flowing between servers. Useful when identifying cross availability zone traffic that can be quite expensive with cloud providers like AWS and GCP.
 
-![](<../.gitbook/assets/image (1).png>)
+![](<../.gitbook/assets/image (1) (1).png>)
 
 ## systemd-resolve
 
@@ -303,7 +303,7 @@ ssh -i <path-to-private-ssh-key> username@example.com
 
 ## scp
 
-Secure copy (remote file copy program). 
+Secure copy (remote file copy program).&#x20;
 
 ```
 # copy local file to remote server
@@ -353,7 +353,7 @@ telnet <IP> <port>
 telnet 10.255.10.15 8080
 ```
 
-## whois 
+## whois&#x20;
 
 Internet domain name and network number directory service.
 

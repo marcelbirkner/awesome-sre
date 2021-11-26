@@ -102,6 +102,16 @@ ip-10-255-202-81.us-west-2.compute.internal    Ready    <none>   35d     v1.20.7
 ...
 ```
 
+### Copy file from/to Pod
+
+Copy file from/to pod to local machine.&#x20;
+
+```
+kubectl cp <namespace>/<pod>:/tmp/from.txt /tmp/to.txt
+
+kubectl cp /tmp/from.txt <namespace>/<pod>:/tmp/to.txt 
+```
+
 ### Debug DNS inside a Kubernetes cluster
 
 First install **dnsutils**&#x20;
