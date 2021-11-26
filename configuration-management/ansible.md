@@ -4,7 +4,7 @@ description: Ansible is configuration management tool written in python.
 
 # Ansible
 
-Ansible is a radically simple IT automation system. It handles configuration management, application deployment, cloud provisioning, ad-hoc task execution, network automation, and multi-node orchestration. Ansible makes complex changes like zero-downtime rolling updates with load balancers easy. More information on the Ansible [website](https://ansible.com).
+Ansible is a simple IT automation system. It handles configuration management, application deployment, cloud provisioning, ad-hoc task execution, network automation, and multi-node orchestration. [More information on the Ansible documentation.](https://docs.ansible.com/ansible/latest/index.html)
 
 ## Configure Ansible for AWS
 
