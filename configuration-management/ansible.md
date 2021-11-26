@@ -67,10 +67,10 @@ ansible-inventory --graph
 
 @all:
   |--@aws_ec2:
-  |  |--server-1-eu-west-1.instana.io
-  |  |--server-2-eu-west-1.instana.io
-  |  |--server-3-eu-west-1.instana.io
-  |  |--server-4-eu-west-1.instana.io
+  |  |--server-1-eu-west-1.company.com
+  |  |--server-2-eu-west-1.company.com
+  |  |--server-3-eu-west-1.company.com
+  |  |--server-4-eu-west-1.company.com
  ...
 ```
 
@@ -81,9 +81,9 @@ ansible aws_ec2 --become -a 'uname -r'
 ```
 
 ```
-server-1-eu-west-1.instana.io | CHANGED | rc=0 >>
+server-1-eu-west-1.company.com | CHANGED | rc=0 >>
 4.15.0-1045-aws
-server-2-eu-west-1.instana.io | CHANGED | rc=0 >>
+server-2-eu-west-1.company.com | CHANGED | rc=0 >>
 5.4.0-1055-aws
 ...
 ```
