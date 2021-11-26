@@ -223,13 +223,13 @@ Show which interface/port a process (PID) is using
 netstat -tnlp
 ```
 
-![](../.gitbook/assets/image.png)
+![](<../.gitbook/assets/image (1).png>)
 
 ## iptraf
 
 Interactive Colorful IP LAN Monitor. Useful tool to see traffic flowing between servers. Useful when identifying cross availability zone traffic that can be quite expensive with cloud providers like AWS and GCP.
 
-![](<../.gitbook/assets/image (1) (1).png>)
+![](<../.gitbook/assets/image (1) (1) (1).png>)
 
 ## systemd-resolve
 

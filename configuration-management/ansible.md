@@ -10,7 +10,7 @@ Ansible is a simple IT automation system. It handles configuration management, a
 
 Create an EC2 role with required permissions so Ansible can read EC2 system information via the AWS API. Attach this role to the EC2 instance where Ansible is installed.
 
-![](<../.gitbook/assets/image (1).png>)
+![](<../.gitbook/assets/image (1) (1).png>)
 
 Install Ansible on EC2 instance an prepare configuration files&#x20;
 
@@ -86,4 +86,68 @@ server-1-eu-west-1.instana.io | CHANGED | rc=0 >>
 server-2-eu-west-1.instana.io | CHANGED | rc=0 >>
 5.4.0-1055-aws
 ...
+```
+
+## Configure Ansible for GCP
+
+Create a Google Service Account with required permissions so Ansible can read GCP instance information via the API.
+
+![](../.gitbook/assets/image.png)
+
+Install Ansible on GCP instance an prepare configuration files.
+
+**ansible.cfg**
+
+```
+[inventory]
+enable_plugins = auto
+[defaults]
+inventory = environment.gcp_compute.yaml
+deprecation_warnings = False
+```
+
+**environment.gcp\_compute.yaml**
+
+```
+---
+plugin: google.cloud.gcp_compute
+projects:
+  - company-production
+zones:
+  - europe-west1-a
+  - europe-west1-b
+  - europe-west1-c
+  - europe-west1-d
+auth_kind: serviceaccount
+service_account_file: <INSTALL_PATH>/ansible/serviceaccount.json
+hostnames:
+  - name
+filters:
+  - status = RUNNING
+keyed_groups:
+  - prefix: gcp
+    key: labels
+```
+
+**serviceaccount.json**
+
+```
+{
+  "type": "service_account",
+  "project_id": "company-production",
+ ...
+}
+```
+
+## Tagging / Grouping&#x20;
+
+When spinning up new EC2 or GCP instances add labels to each instance. Ansible will use this labels to create groups. When running ansible commands you can use this groups to execute commands only on a subset of servers.
+
+Terraform Snippet for adding labels
+
+```
+  labels = {
+    datastore = var.node_type
+    environment = var.environment
+  }
 ```
