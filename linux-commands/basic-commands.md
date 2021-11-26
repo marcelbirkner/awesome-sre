@@ -57,7 +57,7 @@ ps aux | awk '{print $1}' | sort | uniq -c
     169 root
 ```
 
-### Count lines of code in a directory
+## Count lines of code in a directory
 
 ```
 > cloc .
