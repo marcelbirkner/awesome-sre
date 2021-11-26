@@ -1,4 +1,12 @@
+---
+description: Go is a statically typed, compiled programming language
+---
+
 # GoLang
+
+## Coding exercise
+
+[https://github.com/marcelbirkner/coding-exercises](https://github.com/marcelbirkner/coding-exercises)
 
 ## Useful libraries
 
