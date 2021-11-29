@@ -171,7 +171,7 @@ curl -s localhost:9200/_cluster/settings | jq .
 
 ### Find problematic shards
 
-If nodes crash and leave the cluster the status for the affected shards will change to "NODE\_LEFT".
+If nodes crash and leave the cluster the status for the affected shards will change to "NODE\_LEFT".&#x20;
 
 ```
 curl -XGET localhost:9200/_cat/shards | grep -v STARTED
@@ -179,6 +179,8 @@ curl -XGET localhost:9200/_cat/shards | grep -v STARTED
 # more output fields
 curl -XGET localhost:9200/_cat/shards?h=index,shard,prirep,state,unassigned.reason| grep UNASSIGNED
 ```
+
+Another reason for problems can be UNASSIGNED\_SHARDS. This can happen if the disk watermark has reached a level where no new shards can be assigned to ElasticSearch nodes. This is a good indicator that the cluster needs to be scaled out.&#x20;
 
 Retrieve more information about shard allocation issues
 
