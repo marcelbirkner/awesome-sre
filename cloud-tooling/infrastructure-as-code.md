@@ -14,6 +14,6 @@ This section explains a SAAS setup that makes it easy for SRE team to manage env
 
 ## Terraform
 
-[https://www.terraform.io/](https://www.terraform.io) is another tool by HashiCorp. it is an open-source infrastructure as code software tool that provides a consistent CLI workflow to manage hundreds of cloud services. It is used to setup Cloud infrastructure, i.e. VPC, subnets, server, NAT gateways, firewall rules, security groups, any many other things.
+[https://www.terraform.io/](https://www.terraform.io) is another tool by HashiCorp. It is an open-source infrastructure as code software tool that provides a consistent CLI workflow to manage hundreds of cloud services. It is used to setup Cloud infrastructure, i.e. VPC, subnets, server, NAT gateways, firewall rules, security groups, any many other things.
 
 Cheat Sheet: [https://acloudguru.com/blog/engineering/the-ultimate-terraform-cheatsheet](https://acloudguru.com/blog/engineering/the-ultimate-terraform-cheatsheet)
