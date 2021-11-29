@@ -32,3 +32,7 @@
 
 * [Ansible](configuration-management/ansible.md)
 * [Chef](configuration-management/chef.md)
+
+## Cloud Tooling
+
+* [Infrastructure as Code](cloud-tooling/infrastructure-as-code.md)
