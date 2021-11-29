@@ -31,3 +31,4 @@
 ## Configuration Management
 
 * [Ansible](configuration-management/ansible.md)
+* [Chef](configuration-management/chef.md)
