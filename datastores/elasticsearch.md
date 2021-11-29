@@ -175,5 +175,14 @@ If nodes crash and leave the cluster the status for the affected shards will cha
 
 ```
 curl -XGET localhost:9200/_cat/shards | grep -v STARTED
+
+# more output fields
+curl -XGET localhost:9200/_cat/shards?h=index,shard,prirep,state,unassigned.reason| grep UNASSIGNED
+```
+
+Retrieve more information about shard allocation issues
+
+```
+curl -XGET localhost:9200/_cluster/allocation/explain?pretty
 ```
 
