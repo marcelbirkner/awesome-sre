@@ -64,13 +64,17 @@ openssl genrsa 4096 > intermediate.cakey.pem
 ### Step 4: Create intermediate CA Certificate Signing Request (CSR)
 
 ```
-openssl req -new -sha256 -config intermediate/openssl.cnf -key intermediate/private/intermediate.cakey.pem -out intermediate/csr/intermediate.csr.pem
+openssl req -new -sha256 -config intermediate/openssl.cnf \
+   -key intermediate/private/intermediate.cakey.pem \
+   -out intermediate/csr/intermediate.csr.pem
 ```
 
 ### Step 5: Sign and generate intermediate CA certificate
 
 ```
-openssl ca -config openssl.cnf -extensions v3_intermediate_ca -days 2650 -notext -batch -in intermediate/csr/intermediate.csr.pem -out intermediate/certs/intermediate.cacert.pem
+openssl ca -config openssl.cnf -extensions v3_intermediate_ca -days 2650 \
+   -notext -batch -in intermediate/csr/intermediate.csr.pem \
+   -out intermediate/certs/intermediate.cacert.pem
 ```
 
 ### Links
