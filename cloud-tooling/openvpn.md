@@ -44,25 +44,34 @@ Source: [https://duo.com/docs/openvpn](https://duo.com/docs/openvpn)
 
 ### Step 1. Generate the CA key
 
+```
 openssl genrsa 4096 > vpn-ca-key.pem
+```
 
 ### Step 2. Using the CA key, generate the CA certificate (10 years)
 
+```
 openssl req -new -x509 -nodes -days 365000 -key vpn-ca-key.pem -out vpn-ca.pem
-
 openssl x509 -noout -text -in vpn-ca.pem
+```
 
 ### Step 3: Generate Intermediate CA key
 
+```
 openssl genrsa 4096 > intermediate.cakey.pem
+```
 
 ### Step 4: Create intermediate CA Certificate Signing Request (CSR)
 
+```
 openssl req -new -sha256 -config intermediate/openssl.cnf -key intermediate/private/intermediate.cakey.pem -out intermediate/csr/intermediate.csr.pem
+```
 
 ### Step 5: Sign and generate intermediate CA certificate
 
-openssl ca -config openssl.cnf -extensions v3\_intermediate\_ca -days 2650 -notext -batch -in intermediate/csr/intermediate.csr.pem -out intermediate/certs/intermediate.cacert.pem
+```
+openssl ca -config openssl.cnf -extensions v3_intermediate_ca -days 2650 -notext -batch -in intermediate/csr/intermediate.csr.pem -out intermediate/certs/intermediate.cacert.pem
+```
 
 ### Links
 
