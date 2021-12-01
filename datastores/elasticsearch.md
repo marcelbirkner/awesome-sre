@@ -188,3 +188,13 @@ Retrieve more information about shard allocation issues
 curl -XGET localhost:9200/_cluster/allocation/explain?pretty
 ```
 
+## Decommission a node from ElasticSearch cluster
+
+```
+curl -XPUT localhost:9200/_cluster/settings -H 'Content-Type: application/json' -d '{
+  "transient" :{
+      "cluster.routing.allocation.exclude._ip" : "10.255.80.90"
+   }
+}';
+```
+
