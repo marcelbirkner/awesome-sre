@@ -1,12 +1,20 @@
 ---
-description: OpenVPN is a virtual private network (VPN)
+description: Setup virtual private network (VPN)
 ---
 
-# OpenVPN
+# VPN
+
+## Tailscale
+
+A secure network that just works. Zero config VPN. Installs on any device in minutes, manages firewall rules for you, and works from anywhere. Have only used this for personal use so far and setup and configuration has been really easy.
+
+[https://tailscale.com/](https://tailscale.com)
+
+## OpenVPN
 
 OpenVPN is a virtual private network (VPN) system that implements techniques to create secure point-to-point or site-to-site connections in routed or bridged configurations and remote access facilities. It implements both client and server applications.
 
-## Infrastructure Overview
+### Infrastructure Overview
 
 The following diagram shows a typical setup for a SAAS environment that is using OpenVPN. All critical systems run in private subnets. Only the OpenVPN bastion host is accessible from the public Internet. Thats how SRE / OPS / DEVS can connect to the environment using secure VPN clients (like [Tunnelblick on MacOS](https://tunnelblick.net/downloads.html) or [openvpn client on Linux](https://openvpn.net/cloud-docs/openvpn-3-client-for-linux/))
 
@@ -22,7 +30,7 @@ The following diagram shows a typical setup for a SAAS environment that is using
 
 ![](<../.gitbook/assets/image (2).png>)
 
-## OpenVPN with 2FA
+### OpenVPN with 2FA
 
 For additional level of security OpenVPN can be configured with 2-Factor-Authentication
 
@@ -40,28 +48,28 @@ For additional level of security OpenVPN can be configured with 2-Factor-Authent
 
 Source: [https://duo.com/docs/openvpn](https://duo.com/docs/openvpn)
 
-## Setup OpenVPN
+### Setup OpenVPN
 
-### Step 1. Generate the CA key
+#### Step 1. Generate the CA key
 
 ```
 openssl genrsa 4096 > vpn-ca-key.pem
 ```
 
-### Step 2. Using the CA key, generate the CA certificate (10 years)
+#### Step 2. Using the CA key, generate the CA certificate (10 years)
 
 ```
 openssl req -new -x509 -nodes -days 365000 -key vpn-ca-key.pem -out vpn-ca.pem
 openssl x509 -noout -text -in vpn-ca.pem
 ```
 
-### Step 3: Generate Intermediate CA key
+#### Step 3: Generate Intermediate CA key
 
 ```
 openssl genrsa 4096 > intermediate.cakey.pem
 ```
 
-### Step 4: Create intermediate CA Certificate Signing Request (CSR)
+#### Step 4: Create intermediate CA Certificate Signing Request (CSR)
 
 ```
 openssl req -new -sha256 -config intermediate/openssl.cnf \
@@ -69,7 +77,7 @@ openssl req -new -sha256 -config intermediate/openssl.cnf \
    -out intermediate/csr/intermediate.csr.pem
 ```
 
-### Step 5: Sign and generate intermediate CA certificate
+#### Step 5: Sign and generate intermediate CA certificate
 
 ```
 openssl ca -config openssl.cnf -extensions v3_intermediate_ca -days 2650 \
@@ -77,6 +85,6 @@ openssl ca -config openssl.cnf -extensions v3_intermediate_ca -days 2650 \
    -out intermediate/certs/intermediate.cacert.pem
 ```
 
-### Links
+#### Links
 
 https://www.golinuxcloud.com/openssl-create-certificate-chain-linux/
