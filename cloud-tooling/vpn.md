@@ -6,7 +6,7 @@ description: Setup virtual private network (VPN)
 
 ## Tailscale
 
-A secure network that just works. Zero config VPN. Installs on any device in minutes, manages firewall rules for you, and works from anywhere. Have only used this for personal use so far and setup and configuration has been really easy.
+A secure network that just works. Zero config VPN. Installs on any device in minutes, manages firewall rules for you, and works from anywhere. Setup and configuration has been extremely easy compared to OpenVPN.
 
 [https://tailscale.com/](https://tailscale.com)
 
